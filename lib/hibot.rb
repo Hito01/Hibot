@@ -1,16 +1,39 @@
+# vendor gems
 require 'cinch'
+require 'httparty'
+require 'rainbow'
 
-# plugins
+# custom classes
+require 'hibot/helpers/configuration'
+require 'api/spotify'
 require 'hibot/plugins/spotify'
 
-class Hibot
-  def initialize
+
+module Hibot
+  extend Configuration
+  def self.launch(opts)
+    # Read the config file and get all the settings in the config hash
+    config = self.configure(opts)
     bot = Cinch::Bot.new do
       configure do |c|
-        c.server = "irc.freenode.org"
-        c.channels = ["#spotfibot"]
-        c.plugins.plugins = [Spotify]
+        # General bot settings such server, channels etc
+        config[:general].each {|opt, value|
+          c.send("#{opt}=".to_sym, value)  
+        }
+
+        # Load plugins
+        c.plugins.plugins = []
+        config[:general]['plugins.plugins'.to_sym].each do |plugin|
+          c.plugins.plugins << Object.const_get(plugin)
+        end        
       end
+    end
+
+    # Loop to configure each activated plugins
+    config[:general]['plugins.plugins'.to_sym].each do |plugin|
+      # Format the plugin name to call the appropriate configure method
+      plugin_name = plugin.split('::').join('_').downcase
+      self.send("configure_#{plugin_name}", config[plugin.to_sym])
     end
 
     bot.start

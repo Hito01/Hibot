@@ -1,5 +1,19 @@
 #!/usr/bin/env ruby
 
+require "optparse"
 require 'hibot'
 
-Hibot.new
+
+opts = {
+  path: File.join(File.expand_path('~'), '.hibotrc')
+}
+
+OptionParser.new do |o|
+  o.banner = "USAGE: #{$0} [options]"
+
+  o.on("-c", "--config [CONFIG PATH]", "Set the location of the .hibotrc file") do |p|
+    opts[:path] = p
+  end
+end.parse!
+
+Hibot.launch(opts)

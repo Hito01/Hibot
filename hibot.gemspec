@@ -13,8 +13,11 @@ Gem::Specification.new do |s|
   s.license     = 'MIT'
 
   s.add_dependency "cinch", "~> 2.2"
+  s.add_dependency "httparty", "~> 0.13"
+  s.add_dependency "rainbow", "~> 2.0"
 
   s.add_development_dependency "bundler", "~> 1.9"
+  s.add_development_dependency "rake", "~> 10.4"
 
   s.files      = `git ls-files`.split($\)
 
