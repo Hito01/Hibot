@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.authors     = ["Nicolas Collard"]
   s.email       = 'niko@hito.be'
   s.files       = ["lib/hibot.rb"]
-  s.homepage    = 'http://rubygems.org/gems/hibot'
+  s.homepage    = 'https://github.com/Hito01/Hibot'
   s.license     = 'MIT'
 
   s.add_dependency "cinch", "~> 2.2"
@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rake", "~> 10.4"
 
   s.files      = `git ls-files`.split($\)
+  s.test_files = s.files.grep(/^spec/)
 
   s.executables << "hibot"
 end
