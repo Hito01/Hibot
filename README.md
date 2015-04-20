@@ -28,8 +28,6 @@ Then, just run the hibot binary to launch the bot. If you changed to default hib
 
 ## Plugins
 
-At the moment, the following plugins are available :
-
 To use a plugin, first you have to add it to the hibotrc file. Then configure the plugin if some extra configuration is needed. Here is the plugin list and the instructions per plugin :
 
 1. Hibot::Spotify : allows you to parse Spotify uri when pasted in a channel or to search through Spotify's API some data.
@@ -42,6 +40,15 @@ To use this plugin, you have to create a spotify application. You can do it from
 :Hibot::Spotify:
   :client_id: your_client_id
   :client_secret: your_client_secret
+```
+
+2. Hibot::Giphy : allows you to get random gif uri matching your query
+
+To use this plugin, you have to request an API key more information about how to get a key [here](https://github.com/giphy/GiphyAPI#access-and-api-keys). When you have your key, complete the hibotrc file with that structure : 
+
+```yaml
+:Hibot::Giphy:
+  :api_key: your_api_key
 ```
 
 ## Contribute

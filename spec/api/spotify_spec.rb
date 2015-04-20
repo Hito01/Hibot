@@ -11,6 +11,10 @@ RSpec.describe API::Spotify do
       expect(obj.parse_uri('spotify:track:0YQznyH9mJn6UTwWFHqy4b')).to eq('Nicolas Jaar - El Bandido')
     end
 
+    it "should return a result if the uri matches with an artist" do
+      expect(obj.parse_uri('spotify:artist:7dGJo4pcD2V6oG8kP0tJRR')).to eq('Eminem')
+    end
+
     it "should return nil if the uri doesn't match with any results" do
       expect(obj.parse_uri('spotify:track:xxxxxxxxxxxxxxxxxx')).to eq(nil)
     end

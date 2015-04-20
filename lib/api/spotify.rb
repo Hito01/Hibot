@@ -6,6 +6,7 @@ module API
 
     def search(query)
       # Check that parameters are correct or return the corresponding error
+      query = query.gsub('!ssearch', '').strip
       type, q = query.split(' ')
       return "Invalid search request. You have to provide a valid type (artist, album or track) and then your query" if type.nil? || q.nil?
       return "Bad request. Allowed types are album, artist and track." unless PERMITTED_TYPES.include?(type)

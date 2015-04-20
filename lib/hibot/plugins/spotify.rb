@@ -3,12 +3,11 @@ module Hibot
     include Cinch::Plugin
     include API::Spotify
 
-    match "search", method: :search
+    match /ssearch/, {method: :query}
     match API::Spotify::URI_REGEX, {method: :parse, use_prefix: false}
 
-    def search(m)
-      # Search on the message without !search and without any trailing spaces
-      result = search(m.message.gsub('!search', '').split)
+    def query(m)
+      result = search(m.message)
       m.reply result
     end
 

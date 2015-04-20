@@ -54,4 +54,15 @@ RSpec.describe Configuration do
       expect(API::Spotify.class_variable_get(:@@bar)).to eq('foo')
     end
   end
+
+  describe "configure the gihpy plugin" do
+    it "should create class variable for each options" do
+      opts = {foo: "bar", bar: "foo"}
+      obj.configure_hibot_giphy(opts)
+      expect(API::Giphy.class_variable_defined?(:@@foo)).to eq(true)
+      expect(API::Giphy.class_variable_get(:@@foo)).to eq('bar')
+      expect(API::Giphy.class_variable_defined?(:@@bar)).to eq(true)
+      expect(API::Giphy.class_variable_get(:@@bar)).to eq('foo')
+    end
+  end
 end

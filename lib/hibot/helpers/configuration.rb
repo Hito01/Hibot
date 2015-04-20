@@ -23,4 +23,10 @@ module Configuration
       API::Spotify.class_variable_set("@@#{opt}", value)
     }
   end
+
+  def configure_hibot_giphy(opts)
+    opts.each {|opt, value|
+      API::Giphy.class_variable_set("@@#{opt}", value)
+    }
+  end
 end

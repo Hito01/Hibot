@@ -6,7 +6,9 @@ require 'rainbow'
 # custom classes
 require 'hibot/helpers/configuration'
 require 'api/spotify'
+require 'api/giphy'
 require 'hibot/plugins/spotify'
+require 'hibot/plugins/giphy'
 
 
 module Hibot
@@ -25,7 +27,7 @@ module Hibot
         c.plugins.plugins = []
         config[:general]['plugins.plugins'.to_sym].each do |plugin|
           c.plugins.plugins << Object.const_get(plugin)
-        end        
+        end
       end
     end
 
