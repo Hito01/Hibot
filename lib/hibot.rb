@@ -31,7 +31,7 @@ module Hibot
       end
       
       on :connect do |m|
-        User('nickserv').send("IDENTIFY #{config[:general][:nick]} #{conf[:general][:pass]}")
+        User('nickserv').send("IDENTIFY #{config[:general][:nick]} #{config[:general][:pass]}")
       end
     end
 
