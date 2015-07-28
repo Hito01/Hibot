@@ -29,6 +29,10 @@ module Hibot
           c.plugins.plugins << Object.const_get(plugin)
         end
       end
+      
+      on :connect do |m|
+        User('nickserv').send("IDENTIFY #{config[:general][:nick]} #{conf[:general][:pass]}")
+      end
     end
 
     # Loop to configure each activated plugins

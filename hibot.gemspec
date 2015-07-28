@@ -2,8 +2,8 @@
 
 Gem::Specification.new do |s|
   s.name        = 'hibot'
-  s.version     = '0.0.1'
-  s.date        = '2015-04-16'
+  s.version     = '0.0.3'
+  s.date        = '2015-07-28'
   s.summary     = "IRC bot supporting multiple services."
   s.description = "IRC bot supporting multiple services like spotify, giphy and so on."
   s.authors     = ["Nicolas Collard"]
